@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Rock paper Scissors</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Jumbotron -->
+        <div class="jumbotron" style="background-color: palevioletred; color: black">
+            <h1 class="text-center">Rock Paper Scissors !</h1>
+        </div>
+        <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                <form class="form-inline">
+                        <label for="playerName"></label>
+                         <input class="form-control" id="player-name" placeholder="NAME" type="text">
+                                <button class="btn button-default custom-btn float-right" id="Start">Start</button>
+                 </form>
+                </div>
+                </div>
+                  
+                                
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input class="form-control" id="player1arena" placeholder="Waiting for Player1" type="comment">
+                        </div>
+                        <div class="col-md-4">
+                            <input class="form-control" id="score" placeholder="" type="comment">
+                        </div>
+                        <div class="col-md-4">
+                            <input class="form-control" id="player2arena" placeholder="Waiting for Player2" type="comment">
+                        </div>
+                    </div>
+            </div>
+            </form>
+        
+
+    <!-- JavaScript -->
+    <script src="assets/javascript/RPSGame.js"></script>
+
+</body>
+
+</html>

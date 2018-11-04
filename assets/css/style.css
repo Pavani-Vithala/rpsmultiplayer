@@ -1,0 +1,54 @@
+body{
+    background-color: palegreen;
+}
+#player1arena{
+
+    width:200px;
+    height:200px;
+    border: solid;
+    border-width: .2px;
+    border-color:black;
+    margin:30px;
+    background-color:peachpuff;
+    
+}
+#player2arena{
+
+    width:200px;
+    height:200px;
+    border: solid;
+    border-width: .2px;
+    border-color:black;
+    margin:30px;
+    background-color:peachpuff;
+}
+#score{
+
+    width:200px;
+    height:200px;
+    border: solid;
+    border-width: .2px;
+    border-color:black;
+    margin:30px;
+    background-color:rgb(241, 151, 71);
+}
+#start,#player-name{
+    margin:10px;
+    align-items: center;
+}
+.jumbotron{
+    margin-bottom:10px;
+    padding:20px;
+}
+#start{
+    color:plum;
+}
+#player-name{
+    border-style:outset;
+    border-color:grey;
+    border-width:3px;
+    background-color:peachpuff;
+}
+.btn .button-default .custom-btn{
+    background-color: blueviolet;
+}
