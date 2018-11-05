@@ -10,6 +10,8 @@ body{
     border-color:black;
     margin:30px;
     background-color:peachpuff;
+    color:black;
+   
     
 }
 #player2arena{
@@ -21,6 +23,7 @@ body{
     border-color:black;
     margin:30px;
     background-color:peachpuff;
+    color:black;
 }
 #score{
 
@@ -31,6 +34,7 @@ body{
     border-color:black;
     margin:30px;
     background-color:rgb(241, 151, 71);
+    color:black;
 }
 #start,#player-name{
     margin:10px;
@@ -42,13 +46,20 @@ body{
 }
 #start{
     color:plum;
+    color:black;
 }
 #player-name{
     border-style:outset;
     border-color:grey;
     border-width:3px;
     background-color:peachpuff;
+    color:black;
 }
 .btn .button-default .custom-btn{
     background-color: blueviolet;
+    color:black;
+}
+#playerInfo{
+    font-size:30px;
+    text-align:center;
 }

@@ -1,0 +1,13 @@
+1. HTMl Design
+
+2. Retreive the Player Names and Push to DB
+
+3. Display options to Players
+
+4. Display Win or Lose base don the choices.
+
+5. Track Wins and Loses and store in DB.
+
+6. If player changes(Player 1 or Players, clear wins and loses and wait for another player to join
+
+7. Chat functionality
