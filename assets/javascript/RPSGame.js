@@ -1,5 +1,5 @@
-playerName1=""
-playerName2=""
+player1Connect=0
+player2Connect=0
 player1Win=0;
 player2Win=0;
 player1Lose=0;
@@ -17,19 +17,14 @@ var config = {
   firebase.initializeApp(config);
    
   var database = firebase.database();
-  database.ref("/playerData").push(
-      {playerName1:playerName1,
-        playerName2:playerName2,
-        player1Win:player1Win,
-        player2Win:player2Win,
-        player1Lose:player1Lose,
-        player2Lose:player2Lose
-    });
+  
+    
   
   $("#Start").on("click", function(event) {
       console.log("Entered button click function");
     event.preventDefault();
      // Grabs user input
+     player1Connect = 1;
     var playerName = $("#player-name").val().trim();
     var CurPlayer1 = $("#player1arena").val();
     var CurPlayer2 = $("#player2arena").val();
@@ -41,15 +36,12 @@ var config = {
     {
         if(CurPlayer1 === "")
             {
-        database.ref("/playerData").push(
-            {
-              playerName1:playerName,
-              playerName2:playerName2,
-              player1Win:player1Win,
-              player2Win:player2Win,
-              player1Lose:player1Lose,
-              player2Lose:player2Lose
-            });
+              database.ref("player1Data").push(
+                {playerName1:playerName,
+                  player1Win:player1Win,
+                  player1Lose:player1Lose,
+                  player1Connect:player1Connect
+                });
             $("#player-name").hide();
             $("#Start").hide();
             $("#playerInfo").append("<br>");
@@ -60,16 +52,14 @@ var config = {
           
      else
      {
-     database.ref("/playerData").push(
+       player2Connect = 1;
+      database.ref("player2Data").push(
         {
-          playerName1:playerName1,
           playerName2:playerName,
-          player1Win:player1Win,
           player2Win:player2Win,
-          player1Lose:player1Lose,
-          player2Lose:player2Lose
-        
-      }); 
+          player2Lose:player2Lose,
+          player2Connect:player2Connect
+      });
       $("#player-name").hide();
       $("#Start").hide();
       $("#playerInfo").append("<br>","<br>");
@@ -77,32 +67,35 @@ var config = {
       console.log("The value of STR1 is "+str2);
       $("#playerInfo").text(str2)
       $("#playerInfo").append("<br>","<br>");
+      //playerName = CurPlayer1;
+     // console.log("The value of playerName1 after Player 2 is selected is "+playerName);
+      //track =1;
+      //playGame(playerName);
+
      
 
     }
 } 
   });
 
-  database.ref("/playerData").on('child_added', function(snapshot) {
+  database.ref("player1Data").on('child_added', function(snapshot) {
         playerName1 = snapshot.val().playerName1;
-        playerName2 = snapshot.val().playerName2;
-        
-    console.log("The value of PlayerName2 is "+playerName2);
+        //playerName2 = snapshot.val().playerName2;
+    
+    
     console.log("Entered on value function");
-    if (snapshot.val().playerName1 !== "" && snapshot.val().playerName2 !== "") {
+   /* if (snapshot.val().playerName1 !== "")
         console.log("The value of Player Name1 is"+ snapshot.val().playerName1);
         console.log("The value of Player Name2 is"+ snapshot.val().playerName2);  
-        track = 1;
+        track = 1;*/
       $("#player1arena").val(snapshot.val().playerName1);
-      $("#player2arena").val(snapshot.val().playerName2);
-    }
+     // $("#player2arena").val(snapshot.val().playerName2);
+ /* }
       else
       {
       if (snapshot.val().playerName1 !== "")
       {
-          /*console.log("Setting the player1arena to Player1 name");
-          var player1Details = $("<input>")
-          player1Details.text()*/
+         
             $("#player1arena").val(snapshot.val().playerName1);
           $("#player1arena")
           $("#player-name").text("");
@@ -110,18 +103,23 @@ var config = {
          console.log("The value of Player Name1 is"+ snapshot.val().playerName1);
          console.log("The value of Player Name2 is"+ snapshot.val().playerName2);
       }
-     /* if (snapshot.child("playerName2") != "")
-      {
-          track = 1;
-          console.log("The value of track is "+track);
-          
-
-      }*/
+     
     
-    }
+    }*/
 }, function(errorObject) {
     console.log("The read failed: " + errorObject.code);
-  });  
+  }); 
+  database.ref("player2Data").on('child_added', function(snapshot) {
+    playerName2 = snapshot.val().playerName2;
+    console.log("Entered on value function");
+
+  $("#player2arena").val(snapshot.val().playerName2);
+}, function(errorObject) {
+console.log("The read failed: " + errorObject.code);
+}); 
+
+
+
   function playGame(playerName)
   {
     var str1 = "Hi " +playerName + "!" + " You are Player1";
@@ -129,7 +127,7 @@ var config = {
             var str4 = str1 + "\n" + str3;
             
             console.log("The value of STR3 is "+str4);
-           if (playerName2 === "")
+           if (track !== 1)
              $("#playerInfo").text(str1)
             else
              $("#playerInfo").text(str4);   
